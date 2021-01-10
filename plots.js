@@ -1,8 +1,8 @@
-function buildMetadata(sample) {
+function builddata(sample) {
   d3.json("samples.json").then((data) => {
     var metadata = data.metadata;
     // Filter the data for the object with the desired sample number
-    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var resultArray = metadata.filter((sampleObj) => sampleObj.id == sample);
     var result = resultArray[0];
     // Use d3 to select the panel with id of `#sample-metadata`
     var PANEL = d3.select("#sample-metadata");
@@ -25,7 +25,7 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
   d3.json("samples.json").then((data) => {
     var samples = data.samples;
-    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    var resultArray = samples.filter((sampleObj) => sampleObj.id == sample);
     var result = resultArray[0];
 
     var otu_ids = result.otu_ids;
@@ -38,7 +38,7 @@ function buildCharts(sample) {
       margin: { t: 0 },
       hovermode: "closest",
       xaxis: { title: "OTU ID" },
-      margin: { t: 30}
+      margin: { t: 30 },
     };
     var bubbleData = [
       {
@@ -49,14 +49,17 @@ function buildCharts(sample) {
         marker: {
           size: sample_values,
           color: otu_ids,
-          colorscale: "Earth"
-        }
-      }
+          colorscale: "Earth",
+        },
+      },
     ];
 
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
-    var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
+    var yticks = otu_ids
+      .slice(0, 10)
+      .map((otuID) => `OTU ${otuID}`)
+      .reverse();
     var barData = [
       {
         y: yticks,
@@ -64,12 +67,12 @@ function buildCharts(sample) {
         text: otu_labels.slice(0, 10).reverse(),
         type: "bar",
         orientation: "h",
-      }
+      },
     ];
 
     var barLayout = {
       title: "Top 10 Bacteria Cultures Found",
-      margin: { t: 30, l: 150 }
+      margin: { t: 30, l: 150 },
     };
 
     Plotly.newPlot("bar", barData, barLayout);
@@ -85,10 +88,7 @@ function init() {
     var sampleNames = data.names;
 
     sampleNames.forEach((sample) => {
-      selector
-        .append("option")
-        .text(sample)
-        .property("value", sample);
+      selector.append("option").text(sample).property("value", sample);
     });
 
     // Use the first sample from the list to build the initial plots

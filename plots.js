@@ -1,4 +1,4 @@
-function createMetaData(sample) {
+function builddata(sample) {
   d3.json("samples.json").then((data) => {
     var metadata = data.metadata;
     // Filter the data for the object with the desired sample number

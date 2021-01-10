@@ -1,4 +1,5 @@
 const APIKEY = "asiodqjiuejiqwj2idijdnasjdsajn";
+const SECOND_API_KEY = "aksdjaidjasidjaisdjasdij";
 
 function builddata(sample) {
   d3.json("samples.json").then((data) => {

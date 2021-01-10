@@ -1,6 +1,8 @@
 /**
  * BONUS Solution
  * */
+const ANOTHER_API_KEY = "daskdjaskdajkosdasdjak";
+
 function buildGauge(wfreq) {
   // Enter the washing frequency between 0 and 180
   var level = parseFloat(wfreq) * 20;
@@ -29,10 +31,21 @@ function buildGauge(wfreq) {
       showlegend: false,
       name: "Freq",
       text: level,
-      hoverinfo: "text+name"
+      hoverinfo: "text+name",
     },
     {
-      values: [50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50],
+      values: [
+        50 / 9,
+        50 / 9,
+        50 / 9,
+        50 / 9,
+        50 / 9,
+        50 / 9,
+        50 / 9,
+        50 / 9,
+        50 / 9,
+        50,
+      ],
       rotation: 90,
       text: ["8-9", "7-8", "6-7", "5-6", "4-5", "3-4", "2-3", "1-2", "0-1", ""],
       textinfo: "text",
@@ -48,15 +61,26 @@ function buildGauge(wfreq) {
           "rgba(210, 206, 145, .5)",
           "rgba(232, 226, 202, .5)",
           "rgba(240, 230, 215, .5)",
-          "rgba(255, 255, 255, 0)"
-        ]
+          "rgba(255, 255, 255, 0)",
+        ],
       },
-      labels: ["8-9", "7-8", "6-7", "5-6", "4-5", "3-4", "2-3", "1-2", "0-1", ""],
+      labels: [
+        "8-9",
+        "7-8",
+        "6-7",
+        "5-6",
+        "4-5",
+        "3-4",
+        "2-3",
+        "1-2",
+        "0-1",
+        "",
+      ],
       hoverinfo: "label",
       hole: 0.5,
       type: "pie",
-      showlegend: false
-    }
+      showlegend: false,
+    },
   ];
 
   var layout = {
@@ -66,9 +90,9 @@ function buildGauge(wfreq) {
         path: path,
         fillcolor: "850000",
         line: {
-          color: "850000"
-        }
-      }
+          color: "850000",
+        },
+      },
     ],
     title: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
     height: 500,
@@ -77,14 +101,14 @@ function buildGauge(wfreq) {
       zeroline: false,
       showticklabels: false,
       showgrid: false,
-      range: [-1, 1]
+      range: [-1, 1],
     },
     yaxis: {
       zeroline: false,
       showticklabels: false,
       showgrid: false,
-      range: [-1, 1]
-    }
+      range: [-1, 1],
+    },
   };
 
   var GAUGE = document.getElementById("gauge");
